@@ -12,7 +12,7 @@ void execute_command(char *line)
     char *argv[100];
     int i = 0;
 
-    /* Tokenize the input line into command and arguments */
+    /* split the input into argv[] */
     argv[i] = strtok(line, " ");
     while (argv[i] != NULL)
     {
@@ -20,22 +20,25 @@ void execute_command(char *line)
         argv[i] = strtok(NULL, " ");
     }
 
-    pid = fork();  /* Create a new process */
+    /* if the line was empty or only spaces, do nothing */
+    if (argv[0] == NULL)
+        return;
 
-    if (pid == 0)  /* Child process */
+    pid = fork();
+    if (pid == 0)  /* child */
     {
         if (execve(argv[0], argv, environ) == -1)
         {
-            perror("./shell");  /* Print error if execve fails */
-            exit(127);  /* Exit with error code */
+            perror("./shell");
+            exit(127);
         }
     }
-    else if (pid < 0)  /* Fork failed */
+    else if (pid < 0)  /* fork failed */
     {
         perror("Fork failed");
     }
-    else  /* Parent process */
+    else  /* parent */
     {
-        waitpid(pid, &status, 0);  /* Wait for child to finish */
+        waitpid(pid, &status, 0);
     }
 }
