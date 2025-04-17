@@ -13,9 +13,11 @@ int main(void)
 
 	while (1)
 	{
+		/* Display prompt */
 		write(STDOUT_FILENO, "#cisfun$ ", 9);
 		read = read_input(&line, &len);
 
+		/* Handle EOF (Ctrl+D) */
 		if (read == -1)
 		{
 			free(line);
@@ -23,7 +25,10 @@ int main(void)
 			exit(0);
 		}
 
+		/* Remove newline character */
 		remove_newline(line);
+
+		/* Execute command */
 		execute_command(line);
 	}
 
