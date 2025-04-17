@@ -1,5 +1,4 @@
 #include "main.h"
-#include <unistd.h>  /* for isatty() */
 
 /**
  * main - simple shell entry point
@@ -14,15 +13,14 @@ int main(void)
 
 	while (1)
 	{
-		/* show prompt only when running interactively */
+		/* show prompt in interactive mode only */
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "#cisfun$ ", 9);
 
 		nread = read_input(&line, &len);
-		if (nread == -1)  /* EOF or error */
+		if (nread == -1)  /* EOF (Ctrl+D) or error */
 		{
 			free(line);
-			/* newline only in interactive mode */
 			if (isatty(STDIN_FILENO))
 				write(STDOUT_FILENO, "\n", 1);
 			exit(0);

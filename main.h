@@ -9,8 +9,11 @@
 
 extern char **environ;
 
+#define MAX_ARGS 100
+
 ssize_t read_input(char **line, size_t *len);
 void remove_newline(char *line);
 void execute_command(char *line);
+char *resolve_path(char *cmd);
 
 #endif
