@@ -25,6 +25,7 @@ int main(void)
 
         remove_newline(line);  /* Remove newline character from input */
 
+        /* Execute command and suppress the prompt in its output */
         execute_command(line);  /* Execute the input command */
     }
 

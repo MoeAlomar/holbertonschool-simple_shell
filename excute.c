@@ -9,7 +9,7 @@ void execute_command(char *line)
 {
     pid_t pid;
     int status;
-    char *argv[100];  /* Array to hold command and arguments */
+    char *argv[100];
     int i = 0;
 
     /* Tokenize the input line into command and arguments */
