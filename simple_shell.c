@@ -13,23 +13,19 @@ int main(void)
 
 	while (1)
 	{
-		/* Display prompt */
-		write(STDOUT_FILENO, "#cisfun$ ", 9);
-		read = read_input(&line, &len);
+		write(STDOUT_FILENO, "#cisfun$ ", 9);  // Display prompt
+		read = read_input(&line, &len);  // Read input from user
 
-		/* Handle EOF (Ctrl+D) */
-		if (read == -1)
+		if (read == -1)  // Handle EOF (Ctrl+D)
 		{
 			free(line);
-			write(STDOUT_FILENO, "\n", 1);
+			write(STDOUT_FILENO, "\n", 1);  // Print newline before exit
 			exit(0);
 		}
 
-		/* Remove newline character */
-		remove_newline(line);
+		remove_newline(line);  // Remove newline character from input
 
-		/* Execute command */
-		execute_command(line);
+		execute_command(line);  // Execute the input command
 	}
 
 	free(line);
