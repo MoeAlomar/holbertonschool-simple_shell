@@ -9,7 +9,7 @@
  */
 ssize_t read_input(char **line, size_t *len)
 {
-	return (getline(line, len, stdin));  // Read input from stdin
+    return (getline(line, len, stdin));  /* Read input from stdin */
 }
 
 /**
@@ -18,16 +18,15 @@ ssize_t read_input(char **line, size_t *len)
  */
 void remove_newline(char *line)
 {
-	size_t i = 0;
+    size_t i = 0;
 
-	// Find newline character and remove it
-	while (line[i])
-	{
-		if (line[i] == '\n')
-		{
-			line[i] = '\0';
-			break;
-		}
-		i++;
-	}
+    while (line[i])
+    {
+        if (line[i] == '\n')
+        {
+            line[i] = '\0';
+            break;
+        }
+        i++;
+    }
 }
