@@ -1,35 +1,40 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-#include <stdio.h>
-#include <stdlib.h>
+#define BUFFER_SIZE 1024
+
 #include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#include <fcntl.h>
+#include <errno.h>
 
-#define MAX_ARGS 64
-#define _GNU_SOURCE
-
+/* environ declaration */
 extern char **environ;
-extern int last_status;
-extern char *line;
 
-int main(void);
-int only_spaces(char *s);
+/* Shell functions */
 char *read_line(void);
-void parse_arguments(char *line, char **args);
-char *find_command_path(char *command);
-void execute_command(char *command_path, char **args);
-void handle_command(char **args);
-char *get_env_value(const char *name);
-char *_strdup(const char *str);
-int _strlen(const char *s);
-int _strncmp(const char *s1, const char *s2, size_t n);
-int check_builtin(char **args);
-void free_args_and_exit(void);
+char **split_line(char *line);
+int execute(char **args, char **env);
+char *find_path(char *command, char **env);
 void print_env(void);
-char *tokenize_input(char *line);
+void print_error(char *command);
 
-#endif
+/* String utils */
+int _strlen(const char *s);
+char *_strdup(const char *str);
+int _strcmp(const char *s1, const char *s2);
+char *_strcpy(char *dest, const char *src);
+
+/* Memory management */
+void free_args(char **args);
+
+int _strncmp(const char *s1, const char *s2, size_t n);
+char *_strcat(char *dest, const char *src);
+/* size_t _strlen(const char *s); */
+
+#endif /* SHELL_H */
