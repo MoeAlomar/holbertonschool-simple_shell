@@ -10,6 +10,9 @@ void handle_command(char **args)
 {
 	char *path_cmd = NULL;
 
+	if (!args || !args[0])
+		return;
+
 	if (args[0][0] == '/' || args[0][0] == '.')
 	{
 		if (access(args[0], X_OK) == 0)
@@ -17,16 +20,23 @@ void handle_command(char **args)
 		else
 		{
 			fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
-			return;
+			exit(127);
 		}
 	}
 	else
 	{
+		char *path = getenv("PATH");
+		if (!path || strlen(path) == 0)
+		{
+			fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
+			exit(127);
+		}
+
 		path_cmd = find_command_path(args[0]);
 		if (!path_cmd)
 		{
 			fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
-			return;
+			exit(127);
 		}
 	}
 
@@ -43,6 +53,9 @@ void execute_command(char *path, char **args)
 {
 	pid_t pid;
 	int status;
+
+	if (!path || !args)
+		return;
 
 	pid = fork();
 	if (pid == -1)
