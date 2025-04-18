@@ -29,8 +29,6 @@ char *get_env_value(const char *name);
 char *_strdup(const char *str);
 int _strlen(const char *s);
 int _strncmp(const char *s1, const char *s2, size_t n);
-extern int last_status;
-void execute_command(char *path, char **args);
 char *tokenize_input(char *line);
 
 #endif /* SHELL_H */
