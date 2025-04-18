@@ -2,8 +2,8 @@
 #include <string.h>
 
 /**
- * execute_command - Parses and executes a command, handling PATH & errors
- * @line: Input line (newline already removed)
+ * execute_command - Parses, resolves, and runs a command
+ * @line: input string with newline stripped
  */
 void execute_command(char *line)
 {
@@ -13,7 +13,7 @@ void execute_command(char *line)
     char *cmd_path;
     int i = 0;
 
-    /* Tokenize the input into argv[] */
+    /* Tokenize into argv[] */
     argv[i] = strtok(line, " ");
     while (argv[i] != NULL && i + 1 < MAX_ARGS)
     {
@@ -21,22 +21,21 @@ void execute_command(char *line)
         argv[i] = strtok(NULL, " ");
     }
 
-    /* Ignore empty or all‑spaces input */
+    /* Nothing entered? do nothing */
     if (argv[0] == NULL)
         return;
 
-    /* Resolve via PATH or accept direct slash paths */
+    /* Resolve executable */
     cmd_path = resolve_path(argv[0]);
     if (cmd_path == NULL)
     {
-        /* Print shell‑style error and exit */
         fprintf(stderr, "./hsh: 1: %s: not found\n", argv[0]);
         exit(127);
     }
 
-    /* Fork and exec the resolved command */
+    /* Only fork & exec if we have a valid path */
     pid = fork();
-    if (pid == 0)
+    if (pid == 0)  /* child */
     {
         execve(cmd_path, argv, environ);
         perror("./hsh");
@@ -46,12 +45,12 @@ void execute_command(char *line)
     {
         perror("Fork failed");
     }
-    else
+    else  /* parent */
     {
         waitpid(pid, &status, 0);
     }
 
-    /* Free malloc’d path if we allocated one */
+    /* free the malloc’d path if it wasn’t argv[0] itself */
     if (cmd_path != argv[0])
         free(cmd_path);
 }
