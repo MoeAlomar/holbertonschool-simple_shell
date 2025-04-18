@@ -31,7 +31,7 @@ char *find_command_path(char *command)
 		if (access(full_path, X_OK) == 0)
 		{
 			free(path_copy);
-			return; (strdup(full_path));
+			return	(strdup(full_path));
 		}
 		token = strtok(NULL, ":");
 	}
