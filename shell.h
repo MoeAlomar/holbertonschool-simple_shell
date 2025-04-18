@@ -14,6 +14,7 @@
 
 extern char **environ;
 extern int last_status;
+extern char *line;
 
 int main(void);
 int only_spaces(char *s);
@@ -26,6 +27,9 @@ char *get_env_value(const char *name);
 char *_strdup(const char *str);
 int _strlen(const char *s);
 int _strncmp(const char *s1, const char *s2, size_t n);
+int check_builtin(char **args);
+void free_args_and_exit(void);
+void print_env(void);
 char *tokenize_input(char *line);
 
 #endif

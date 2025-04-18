@@ -11,7 +11,6 @@ char *find_command_path(char *command)
 	char full_path[1024];
 	struct stat st;
 
-
 	if (strchr(command, '/'))
 	{
 		if (stat(command, &st) == 0 && (st.st_mode & S_IXUSR))
@@ -19,7 +18,6 @@ char *find_command_path(char *command)
 		return NULL;
 	}
 
-	
 	path_env = get_env_value("PATH");
 	if (!path_env || *path_env == '\0')
 		return NULL;

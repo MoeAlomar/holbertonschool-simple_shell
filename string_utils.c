@@ -57,7 +57,6 @@ void parse_arguments(char *line, char **args)
 	int i = 0;
 	char *token;
 
-	/* تخلص من المسافات في البداية */
 	while (*line == ' ' || *line == '\t')
 		line++;
 
