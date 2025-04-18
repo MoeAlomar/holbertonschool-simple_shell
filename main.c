@@ -46,6 +46,7 @@ break;
 else if (_strcmp(args[0], "env") == 0)
 {
 print_env();
+status = 0;
 }
 else
 {
