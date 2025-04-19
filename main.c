@@ -41,7 +41,7 @@ if (_strcmp(args[0], "exit") == 0)
 {
 free(line);
 free_args(args);
-break;
+exit(0);
 }
 else if (_strcmp(args[0], "env") == 0)
 {
