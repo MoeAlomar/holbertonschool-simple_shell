@@ -1,0 +1,59 @@
+.TH SIMPLE_SHELL 1 "June 15, 2023" "Version 1.0" "Simple Shell Manual"
+.SH NAME
+simple_shell \- a minimal UNIX command interpreter
+.SH SYNOPSIS
+.B hsh
+[\fIOPTION\fP]...
+.SH DESCRIPTION
+.B simple_shell
+is a minimal implementation of a UNIX shell that reads commands from standard input and executes them.
+.PP
+The shell supports:
+.IP \[bu] 2
+Basic command execution
+.IP \[bu] 2
+Built-in commands:
+.RS
+.IP \fBexit\fP 10
+Exit the shell
+.IP \fBenv\fP
+Print the current environment
+.RE
+.IP \[bu] 2
+PATH resolution for commands
+.IP \[bu] 2
+Error handling for non-existent commands
+.SH OPTIONS
+The shell currently doesn't support any command line options.
+.SH EXIT STATUS
+The shell returns:
+.IP 0 10
+On successful execution
+.IP 1
+On general errors
+.IP 127
+When command is not found
+.SH EXAMPLES
+Execute a command:
+.PP
+.RS
+.nf
+$ /bin/ls
+.fi
+.RE
+.PP
+Use built-in command:
+.PP
+.RS
+.nf
+$ env
+$ exit
+.fi
+.RE
+.SH BUGS
+No known bugs at this time.
+.SH AUTHORS
+Written by \fBKhaled Almimoni\fP and \fBMohammed Alomar\fP.
+.SH SEE ALSO
+.BR bash (1),
+.BR sh (1)
