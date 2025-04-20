@@ -62,7 +62,7 @@ int main(int argc, char **argv, char **env)
         else
         {
             /* execute external command and save its exit status */
-            status = execute_args(args, env);
+            status = execute(args, env);
         }
 
         free(line);
