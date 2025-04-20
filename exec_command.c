@@ -12,6 +12,9 @@ pid_t pid;
 int status;
 char *full_path;
 
+if (!args || !args[0])
+  return (1);
+
 full_path = find_path(args[0], env);
 if (!full_path)
 {
@@ -29,8 +32,13 @@ return (1);
 else if (pid == 0)
 {
 execve(full_path, args, env);
-perror(args[0]);
-exit(EXIT_FAILURE);
+  //Handle execve failure
+if (errno == EACCES)
+  _exit(126);
+
+else
+  _exit(2);
+
 }
 else
 {
