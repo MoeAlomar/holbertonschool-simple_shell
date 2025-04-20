@@ -39,10 +39,15 @@ continue;
 
 if (_strcmp(args[0], "exit") == 0)
 {
-free(line);
-free_args(args);
-exit(0);
+    free(line);
+    free_args(args);
+
+    if (args[1])
+        exit(atoi(args[1]));
+    else
+        exit(status);
 }
+
 else if (_strcmp(args[0], "env") == 0)
 {
 print_env();
