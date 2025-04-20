@@ -6,17 +6,15 @@
 * @argv: Argument vector
 * @env: Environment variables
 *
-* Return: Exit status
+* Return: Always 0
 */
 int main(int argc, char **argv, char **env)
 {
 char *line = NULL;
 char **args = NULL;
-int status = 0;
+int status = 1;
 (void)argc;
 (void)argv;
-
-signal(SIGCHLD, handle_signal);
 
 while (1)
 {
@@ -43,16 +41,12 @@ if (_strcmp(args[0], "exit") == 0)
 {
 free(line);
 free_args(args);
-exit(status);
+exit(0);
 }
 else if (_strcmp(args[0], "env") == 0)
 {
 print_env();
 status = 0;
-}
-else if (_strcmp(args[0], "cd") == 0)
-{
-status = change_dir(args);
 }
 else
 {

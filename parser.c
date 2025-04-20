@@ -12,24 +12,16 @@ int bufsize = 64, i = 0;
 char **tokens = malloc(bufsize * sizeof(char *));
 char *token;
 
-if (!tokens || !line)
+if (!tokens)
 {
-
 perror("malloc");
-return (NULL);
+exit(EXIT_FAILURE);
 }
 
 token = strtok(line, " \t\r\n");
 while (token != NULL)
 {
-tokens[i] = _strdup(token);
-if (!tokens[i])
-{
-  perror("strdup");
-  free_args(tokens);
-  return (NULL);
-}
-i ++;
+tokens[i++] = _strdup(token);
 
 if (i >= bufsize)
 {
@@ -38,7 +30,7 @@ tokens = realloc(tokens, bufsize * sizeof(char *));
 if (!tokens)
 {
 perror("realloc");
-return (NULL);
+exit(EXIT_FAILURE);
 }
 }
 token = strtok(NULL, " \t\r\n");
