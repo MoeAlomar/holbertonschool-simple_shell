@@ -1,59 +1,101 @@
-.TH SIMPLE_SHELL 1 "June 15, 2023" "Version 1.0" "Simple Shell Manual"
+.TH simple_shell 1 "April 2025" "Version 1.0" "User Commands Manual"
 .SH NAME
-simple_shell \- a minimal UNIX command interpreter
+simple_shell \- A lightweight custom UNIX shell written in C.
+
 .SH SYNOPSIS
-.B hsh
-[\fIOPTION\fP]...
+.B simple_shell
+.RI [ input_file ]
+
 .SH DESCRIPTION
 .B simple_shell
-is a minimal implementation of a UNIX shell that reads commands from standard input and executes them.
-.PP
-The shell supports:
-.IP \[bu] 2
-Basic command execution
-.IP \[bu] 2
-Built-in commands:
-.RS
-.IP \fBexit\fP 10
-Exit the shell
-.IP \fBenv\fP
-Print the current environment
-.RE
-.IP \[bu] 2
-PATH resolution for commands
-.IP \[bu] 2
-Error handling for non-existent commands
-.SH OPTIONS
-The shell currently doesn't support any command line options.
-.SH EXIT STATUS
-The shell returns:
-.IP 0 10
-On successful execution
-.IP 1
-On general errors
-.IP 127
-When command is not found
+is a minimalist UNIX shell developed for educational purposes. It replicates core behaviors of traditional shells, including command parsing, execution, and basic built-in support.
+
+This project is structured into modular components to enhance readability, maintainability, and functionality.
+
+.SH MODULES
+.TP
+.B main.c
+The entry point of the shell. Initializes the shell loop, reads user input, and coordinates command processing.
+
+.TP
+.B builtin_env.c
+Implements built-in commands such as
+.B env
+to display environment variables. It interacts directly with the
+.B environ
+global variable.
+
+.TP
+.B exec_command.c
+Handles the execution of external programs. This includes:
+.BR fork (2),
+.BR execve (2),
+and process status tracking via
+.BR waitpid (2).
+
+.TP
+.B parser.c
+Responsible for lexical analysis. It tokenizes user input, manages argument arrays, and sanitizes whitespace.
+
+.TP
+.B path_utils.c
+Resolves the absolute path of commands by iterating through the directories listed in the
+.B PATH
+environment variable.
+
+.TP
+.B memory_utils.c
+Provides memory allocation and cleanup utilities to prevent memory leaks and ensure safe execution.
+
+.SH FEATURES
+.TP
+\fB✔ Executes external commands\fR  
+.TP
+\fB✔ Built-in environment variable display (env)\fR  
+.TP
+\fB✔ PATH resolution for commands\fR  
+.TP
+\fB✔ Error handling for invalid commands\fR  
+.TP
+\fB✔ Clean and modular C code architecture\fR  
+
+.SH LIMITATIONS
+This shell does not currently support:
+.IP \(bu 2
+Redirection (>, >>, <)
+.IP \(bu 2
+Pipes (|), job control, or background processes (&)
+.IP \(bu 2
+Scripting or configuration files (e.g. .bashrc)
+
+.SH USAGE
+After launching, the shell enters an interactive loop or reads commands from a specified input file. It parses each command, resolves the binary path, then creates a child process to execute the command.
+
 .SH EXAMPLES
-Execute a command:
-.PP
-.RS
-.nf
-$ /bin/ls
-.fi
-.RE
-.PP
-Use built-in command:
-.PP
-.RS
-.nf
-$ env
-$ exit
-.fi
-.RE
-.SH BUGS
-No known bugs at this time.
+.TP
+Launch shell in interactive mode:
+.B ./simple_shell
+
+.TP
+Execute a batch script:
+.B ./simple_shell script.txt
+
+.TP
+Display environment variables:
+.B env
+
 .SH AUTHORS
-Written by \fBKhaled Almimoni\fP and \fBMohammed Alomar\fP.
+Developed by:
+.IP \(bu
+Khaled Almimoni  
+.IP \(bu
+Mohammed Alomar
+
+As part of a systems programming project at Holberton School.
+
 .SH SEE ALSO
+.BR sh (1),
 .BR bash (1),
-.BR sh (1)
+.BR execve (2),
+.BR fork (2),
+.BR waitpid (2)
