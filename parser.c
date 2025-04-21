@@ -8,33 +8,33 @@
 */
 char **split_line(char *line)
 {
-int bufsize = 64, i = 0;
-char **tokens = malloc(bufsize * sizeof(char *));
-char *token;
+	int bufsize = 64, i = 0;
+	char **tokens = malloc(bufsize * sizeof(char *));
+	char *token;
 
-if (!tokens)
+	if (!tokens)
 {
-perror("malloc");
-exit(EXIT_FAILURE);
+	perror("malloc");
+	exit(EXIT_FAILURE);
 }
 
-token = strtok(line, " \t\r\n");
-while (token != NULL)
+	token = strtok(line, " \t\r\n");
+	while (token != NULL)
 {
-tokens[i++] = _strdup(token);
+	tokens[i++] = _strdup(token);
 
-if (i >= bufsize)
+	if (i >= bufsize)
 {
-bufsize *= 2;
-tokens = realloc(tokens, bufsize * sizeof(char *));
-if (!tokens)
+	bufsize *= 2;
+	tokens = realloc(tokens, bufsize * sizeof(char *));
+	if (!tokens)
 {
-perror("realloc");
-exit(EXIT_FAILURE);
+	perror("realloc");
+	exit(EXIT_FAILURE);
 }
 }
-token = strtok(NULL, " \t\r\n");
+	token = strtok(NULL, " \t\r\n");
 }
-tokens[i] = NULL;
-return (tokens);
+	tokens[i] = NULL;
+	return (tokens);
 }

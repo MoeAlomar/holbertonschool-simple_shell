@@ -23,6 +23,10 @@ int execute(char **args, char **env);
 char *find_path(char *command, char **env);
 void print_env(void);
 void print_error(char *command);
+char *find_full_path(char *command, char *path);
+char *get_path_from_env(char **env);
+int process_commands(int status, char **env);
+int execute_command(char **args, int status, char **env, char *line);
 
 /* String utils */
 int _strlen(const char *s);
@@ -37,4 +41,4 @@ int _strncmp(const char *s1, const char *s2, size_t n);
 char *_strcat(char *dest, const char *src);
 /* size_t _strlen(const char *s); */
 
-#endif /* SHELL_H */
+#endif
