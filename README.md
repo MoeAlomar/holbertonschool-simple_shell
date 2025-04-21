@@ -1,2 +1,2 @@
-# Holberton-simple_shell
-![69200748-47A2-4434-8DDE-D283B77E0AA1](https://github.com/user-attachments/assets/69b8998f-8126-4d7f-8601-35abde975d57)
+# C-Simple Shell Project
+![76D41700-5846-4980-AABF-9DD7BBD8D637](https://github.com/user-attachments/assets/9dbb0f59-66bb-4d91-b5c0-98ef1be90dd3)
