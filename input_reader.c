@@ -7,15 +7,18 @@
 */
 char *read_line(void)
 {
-char *line = NULL;
-size_t len = 0;
-ssize_t nread;
+	char *line = NULL;
+	size_t len = 0;
+	ssize_t nread;
 
-nread = getline(&line, &len, stdin);
-if (nread == -1)
+	/* Read a line from stdin using getline */
+	nread = getline(&line, &len, stdin);
+	if (nread == -1)
 {
-free(line);
-return (NULL);
+	/* Free allocated memory if getline fails and return null */
+	free(line);
+	return (NULL);
 }
-return (line);
+	/* Return the input line */
+	return (line);
 }

@@ -15,9 +15,9 @@ char *get_path_from_env(char **env)
 
 	for (i = 0; env[i]; i++)
 	{
-	if (_strncmp(env[i], "PATH=", 5) == 0)
+	if (strncmp(env[i], "PATH=", 5) == 0)
 	{
-	path = _strdup(env[i] + 5); /* Skip "PATH=" part */
+	path = strdup(env[i] + 5); /* Skip "PATH=" part */
 	break;
 	}
 	}
@@ -40,20 +40,20 @@ char *find_full_path(char *command, char *path)
 	if (command[0] == '/' || command[0] == '.')
 	{
 	if (stat(command, &st) == 0)
-	return (_strdup(command));
+	return (strdup(command));
 	return (NULL);
 	}
 
 	token = strtok(path, ":");
 	while (token)
 	{
-	full_path = malloc(_strlen(token) + _strlen(command) + 2);
+	full_path = malloc(strlen(token) + strlen(command) + 2);
 	if (!full_path)
 	return (NULL);
 
-	_strcpy(full_path, token);
-	_strcat(full_path, "/");
-	_strcat(full_path, command);
+	strcpy(full_path, token);
+	strcat(full_path, "/");
+	strcat(full_path, command);
 
 	if (stat(full_path, &st) == 0)
 	return (full_path);

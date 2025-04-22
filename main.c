@@ -29,7 +29,7 @@ int execute_command(char **args, int status, char **env, char *line)
 	/* Built-in: env */
 	else if (strcmp(args[0], "env") == 0)
 	{
-		print_env(env);
+		print_env();
 		return (0);
 	}
 	else

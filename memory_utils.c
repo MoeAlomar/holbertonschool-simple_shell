@@ -6,12 +6,13 @@
 */
 void free_args(char **args)
 {
-int i = 0;
-
-while (args[i] != NULL)
+	int i = 0;
+	/* Loop through each argument and free its memory */
+	while (args[i] != NULL)
 {
-free(args[i]);
-i++;
+	free(args[i]);
+	i++;
 }
-free(args);
+	/* Free the memory allocated for the arguments array itself */
+	free(args);
 }

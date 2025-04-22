@@ -49,15 +49,15 @@ Provides memory allocation and cleanup utilities to prevent memory leaks and ens
 
 .SH FEATURES
 .TP
-\fB✔ Executes external commands\fR  
+\fB✔ Executes external commands\fR
 .TP
-\fB✔ Built-in environment variable display (env)\fR  
+\fB✔ Built-in environment variable display (env)\fR
 .TP
-\fB✔ PATH resolution for commands\fR  
+\fB✔ PATH resolution for commands\fR
 .TP
-\fB✔ Error handling for invalid commands\fR  
+\fB✔ Error handling for invalid commands\fR
 .TP
-\fB✔ Clean and modular C code architecture\fR  
+\fB✔ Clean and modular C code architecture\fR
 
 .SH LIMITATIONS
 This shell does not currently support:
@@ -87,7 +87,7 @@ Display environment variables:
 .SH AUTHORS
 Developed by:
 .IP \(bu
-Khaled Almimoni  
+Khaled Almimoni
 .IP \(bu
 Mohammed Alomar
 
