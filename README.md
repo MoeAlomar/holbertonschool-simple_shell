@@ -1,6 +1,8 @@
 # C-Simple Shell Project
-![76D41700-5846-4980-AABF-9DD7BBD8D637](https://github.com/user-attachments/assets/9dbb0f59-66bb-4d91-b5c0-98ef1be90dd3)
-# تعريف المشروع:
-مشروع c-simple_shell هو مشروع بناء برنامج بسيط يحاكي واجهة الأوامر `Shell` الخاصة بأنظمة Unix باستخدام لغة البرمجة C , تم تصميمه بهدف تعلم كيفية عمل ال `Shell` من الداخل وفهم طريقة سير العمليات عن قرب مع `المدخلات، معالجة و تحليل الاوامر، المخرجات` ، تم تطويره من قبل فريق طلابي كمشروع نهائي في لغة C.
+![IMG_76382](https://github.com/user-attachments/assets/4e62d1e4-9ef3-436a-afc6-c2baa6f138cf)
 
-#اهداف المشروع:
+# Project Description:
+
+The `c-simple_shell` project is about building a simple program that mimics the command-line interface `(Shell)` of Unix-based systems using the `C programming language` , It is designed to help understand how a shell works internally and to closely observe the flow of processes, `input, processing, output`, The project was developed by a student team as a final project in the C programming course.
+
+# Project Objectives:
