@@ -13,14 +13,18 @@ The `c-simple_shell` project is about building a simple program that mimics the 
  
 # Files
 
-| File Name        | Description |
-|------------------|-------------|
-| `main.c`         | Entry point of the program; manages the main loop for receiving and handling commands. |
-| `builtin_env.c`  | Implements the built-in `env` command to display environment variables. |
-| `exec_command.c` | Contains functions to execute commands using `fork()` to create a process and `execve()` to run the program. |
-| `parser.c`       | Responsible for parsing the user's input line into command and arguments (tokens). |
-| `path_utils.c`   | Works with the `PATH` environment variable to resolve the correct path of executables. |
-| `memory_utils.c` | Contains helper functions for memory allocation and deallocation to prevent memory leaks. |
+| File Name            | Description |
+|----------------------|-------------|
+| `main.c`             | Entry point of the shell program; contains the loop that reads and executes user commands |
+| `input_reader.c`     | Contains functions to read user input from the terminal |
+| `exec_command.c`     | Handles the logic for executing user-entered commands |
+| `parser.c`           | Parses and tokenizes user commands into executable components |
+| `builtin_env.c`      | Implements built-in commands like `env` to print environment variables |
+| `memory_utils.c`     | Provides helper functions for memory management, such as string allocation and deallocation |
+| `path_utils.c`       | Handles searching executable paths using environment variables like `$PATH` |
+| `sh_helper.c`        | Miscellaneous helper functions used across various parts of the shell |
+| `shell.h`            | Main header file containing function prototypes and data structure definitions for the project |
+| `man_1_simple_shell` | Manual (man) page file that explains how to use the program, supported commands, usage examples, and author information |
 
 ## How to Run the Program
 
@@ -40,6 +44,16 @@ To run the shell in interactive mode where it waits for user input:
 ./simple_shell
 ```
 
+Here are some example commands that you can test in your `simple_shell`:
+
+```bash
+ ls
+```
+### `$ exit`
+
+```bash
+$ exit
+```
 ## Authors
 
 - **Khaled Almimoni**  
