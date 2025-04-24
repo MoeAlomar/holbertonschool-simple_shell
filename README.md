@@ -48,6 +48,9 @@ Here are some example commands that you can test in your `simple_shell`:
 
 ```bash
  ls
+ pwd
+ cd
+ echo "Hello World"
 ```
 ### `How to get out`
 This command terminates the shell session and exits the program:
