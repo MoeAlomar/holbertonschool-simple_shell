@@ -49,10 +49,11 @@ Here are some example commands that you can test in your `simple_shell`:
 ```bash
  ls
 ```
-### `$ exit`
+### `How to get out`
+This command terminates the shell session and exits the program:
 
 ```bash
-$ exit
+exit
 ```
 ## Authors
 
